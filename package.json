@@ -1,6 +1,6 @@
 {
 	"name": "n8n-nodes-blogautomation",
-	"version": "0.1.0",
+	"version": "0.1.1",
 	"description": "n8n nodes for Blog Automation: write blog articles with AI, manage ideas, schedule and publish to WordPress, and trigger workflows when articles are ready, published or failed.",
 	"license": "MIT",
 	"homepage": "https://blog-automation.com/?utm_source=n8n&utm_medium=integration&utm_campaign=n8n-plugin",
