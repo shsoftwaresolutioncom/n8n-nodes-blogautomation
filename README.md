@@ -72,3 +72,9 @@ npm run dev                    # local n8n with the nodes loaded (needs Node 24 
 ## License
 
 [MIT](LICENSE.md)
+
+## Releasing (maintainers)
+1. Bump `version` in `package.json` (+ lock) and add the entry to `CHANGELOG.md` in a PR to `main`.
+2. After merge, push a tag equal to the version (e.g. `git tag 0.1.1 && git push origin 0.1.1`).
+3. `.github/workflows/publish.yml` lints, tests, builds and publishes to npm **with provenance** via npm trusted publishing (OIDC, no token).
+4. Check with `npx @n8n/scan-community-package n8n-nodes-blogautomation`, then submit / update in the n8n Creator Portal.
