@@ -98,16 +98,7 @@ jobs:
           v=$(node -p "require('./package.json').version")
           [ "$v" = "${GITHUB_REF_NAME}" ] || { echo "tag ${GITHUB_REF_NAME} != package.json $v"; exit 1; }
 
-      - name: Release
-        # Publishes to npm with a provenance attestation (requires id-token: write above).
-        # Lint and build run automatically as part of the release process.
-        #
-        # Option A (OIDC): leave NPM_TOKEN unset — the token step is skipped and
-        #   npm uses the OIDC exchange instead.
-        # Option B (token): set NPM_TOKEN in repo secrets — it is written to
-        #   .npmrc here before publishing.
-        run: |
-          [ -n "$NPM_TOKEN" ] && npm config set //registry.npmjs.org/:_authToken "$NPM_TOKEN"
-          npm run release
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+      - name: Publish (npm trusted publishing, OIDC – no token)
+        # n8n-node release (release-it) checks `npm whoami` first and fails without a token; npm publish uses the OIDC grant directly.
+        # build ran in "Test"; the prerelease hook only blocks local publishes, so it is skipped here.
+        run: npm publish --provenance --access public --ignore-scripts

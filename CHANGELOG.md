@@ -1,5 +1,8 @@
 # Changelog
 
+## 0.1.2 – 2026-11-17
+- Release through npm trusted publishing (no token). Same nodes as 0.1.1.
+
 ## 0.1.1 – 2026-11-07
 - First release published from GitHub Actions with **npm provenance** (required for n8n verified community nodes since 1 May 2026;
   0.1.0 was published from a workstation without provenance and fails `@n8n/scan-community-package`).
